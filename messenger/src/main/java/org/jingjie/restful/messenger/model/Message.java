@@ -1,8 +1,11 @@
 package org.jingjie.restful.messenger.model;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement // tell the JSP the root for XML file
 public class Message {
@@ -11,6 +14,7 @@ public class Message {
 	private String messåge;
 	private Date created;
 	private String author;
+	private Map<Long, Comment> comments = new HashMap<>();
 	
 	public Message() {
 		
@@ -46,5 +50,15 @@ public class Message {
 	}
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+	
+	@XmlTransient 
+	// the annotation is used to ignore comments when user need to show info of a message
+	public Map<Long, Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Map<Long, Comment> comments) {
+		this.comments = comments;
 	}
 }
