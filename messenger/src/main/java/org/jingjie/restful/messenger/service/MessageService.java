@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.jingjie.restful.messenger.database.DatabaseClass;
+import org.jingjie.restful.messenger.exception.DataNotFoundException;
 import org.jingjie.restful.messenger.model.Message;
 
 public class MessageService {
@@ -45,6 +46,10 @@ public class MessageService {
 	
 	// get a particular message with a given id
 	public Message getMessage(long id) {
+		Message message = messages.get(id);
+		if (message == null) 
+			throw new DataNotFoundException("Message with id " + id
+					+ " not found");
 		return messages.get(id);
 	}
 	
