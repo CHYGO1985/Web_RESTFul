@@ -7,6 +7,14 @@ import java.util.Map;
 import org.jingjie.restful.messenger.database.DatabaseClass;
 import org.jingjie.restful.messenger.model.Profile;
 
+/**
+*
+* The services for get and editing profiles.
+* 
+* @author jingjiejiang
+* @history
+* 1. Jun 29, 2017
+*/
 public class ProfileService {
 
 	private Map<String, Profile> profiles = DatabaseClass.getProfiles();

@@ -7,6 +7,12 @@ import javax.ws.rs.ext.Provider;
 
 import org.jingjie.restful.messenger.model.ErrorMessage;
 
+/**
+ * The class is to map DataNotFoundException to RESTFul service.
+ * 
+ * @author jingjiejiang
+ * @history Jun 29, 2017
+ */
 @Provider
 public class DataNotFoundExceptionMapper implements ExceptionMapper<DataNotFoundException> {
 

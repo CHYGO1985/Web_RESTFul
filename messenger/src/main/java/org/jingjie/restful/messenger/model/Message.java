@@ -9,6 +9,18 @@ import java.util.Map;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ * The class is the model for massages which contains: 
+ * 1) message id; 
+ * 2) message content;
+ * 3) message created date;
+ * 4) message author;
+ * 5) comments of the message;
+ * 6) hyperlinks of the message.
+ * 
+ * @author jingjiejiang
+ * @Jun 27, 2017
+ */
 @XmlRootElement // tell the JSP the root for XML file
 public class Message {
 

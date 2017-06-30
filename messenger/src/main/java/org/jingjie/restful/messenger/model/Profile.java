@@ -2,6 +2,12 @@ package org.jingjie.restful.messenger.model;
 
 import java.util.Date;
 
+/**
+ * The class is the model for the registered user. The id is the id for a user.
+ * 
+ * @author jingjiejiang
+ * @Jun 28, 2017
+ */
 public class Profile {
 
 	private long id;

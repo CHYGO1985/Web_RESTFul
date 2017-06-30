@@ -2,6 +2,14 @@ package org.jingjie.restful.messenger.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * 
+ * The class is to handle the error messages of customised exceptions.
+ * 
+ * @author jingjiejiang
+ * @history
+ * 1. Jun 29, 2017
+ */
 @XmlRootElement
 public class ErrorMessage {
 	

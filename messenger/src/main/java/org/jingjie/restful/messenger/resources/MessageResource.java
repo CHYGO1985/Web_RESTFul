@@ -19,6 +19,14 @@ import javax.ws.rs.core.UriInfo;
 import org.jingjie.restful.messenger.model.Message;
 import org.jingjie.restful.messenger.service.MessageService;
 
+/**
+ *
+ * The REST APIs for get and editing messages.
+ * 
+ * @author jingjiejiang
+ * @history
+ * 1. Jun 27, 2017
+ */
 @Path("/messages")
 //because it is a method consumes json, so use Consumes annotation to specify the request body format
 @Consumes(MediaType.APPLICATION_JSON)

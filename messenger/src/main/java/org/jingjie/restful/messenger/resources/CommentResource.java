@@ -15,6 +15,12 @@ import javax.ws.rs.core.MediaType;
 import org.jingjie.restful.messenger.model.Comment;
 import org.jingjie.restful.messenger.service.CommentService;
 
+/**
+ * The REST APIs for get and editing comments.
+ * @author jingjiejiang
+ * @history
+ * 1. Jun 30, 2017
+ */
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

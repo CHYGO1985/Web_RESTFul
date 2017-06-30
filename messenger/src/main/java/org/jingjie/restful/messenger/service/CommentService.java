@@ -8,6 +8,14 @@ import org.jingjie.restful.messenger.database.DatabaseClass;
 import org.jingjie.restful.messenger.model.Comment;
 import org.jingjie.restful.messenger.model.Message;
 
+/**
+*
+* The services for get and editing comments.
+* 
+* @author jingjiejiang
+* @history
+* 1. Jun 30, 2017
+*/
 public class CommentService {
 	
 	private Map<Long, Message> messages = DatabaseClass.getMessages();

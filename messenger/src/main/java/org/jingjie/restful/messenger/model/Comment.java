@@ -2,6 +2,18 @@ package org.jingjie.restful.messenger.model;
 
 import java.util.Date;
 
+/**
+ * 
+ * The class represents the model of comments. The fields include:
+ * 1) comment id;
+ * 2) contents of a comment;
+ * 3) created date of a comment;
+ * 4) author of a comment.
+ * 
+ * @author jingjiejiang
+ * @history 
+ * 1. Jun 30, 2017
+ */
 public class Comment {
 	
 	private long id;

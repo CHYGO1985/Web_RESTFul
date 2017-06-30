@@ -7,6 +7,13 @@ import javax.ws.rs.ext.Provider;
 
 import org.jingjie.restful.messenger.model.ErrorMessage;
 
+/**
+ * The class is to map all unspecified exception to RESTFul service.
+ * 
+ * @author jingjiejiang
+ * @history
+ * 1. Jun 29, 2017
+ */
 @Provider
 public class GenericExceptionMapper implements ExceptionMapper<Throwable>{
 

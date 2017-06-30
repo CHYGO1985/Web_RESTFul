@@ -9,6 +9,14 @@ import org.jingjie.restful.messenger.database.DatabaseClass;
 import org.jingjie.restful.messenger.exception.DataNotFoundException;
 import org.jingjie.restful.messenger.model.Message;
 
+/**
+*
+* The services for get and editing messages.
+* 
+* @author jingjiejiang
+* @history
+* 1. Jun 27, 2017
+*/
 public class MessageService {
 	
 	private Map<Long, Message> messages = DatabaseClass.getMessages();
