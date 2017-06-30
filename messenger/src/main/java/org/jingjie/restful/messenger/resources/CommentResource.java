@@ -41,18 +41,17 @@ public class CommentResource {
 		return service.getComment(messageId, commentId);
 	}
 	
-	// POST a comment to a given message
-	@POST
+	// PUT a comment to a given message
+	@PUT
 	@Path("/{commentId}")
 	public Comment updateComment(@PathParam("messsageId") long messsageId,
 			@PathParam("commentId") long commentId, Comment comment) {
 		return service.updateComment(messsageId, comment);
 	}
 	
-	// PUT a comment of a given message
-	@PUT
-	public Comment addComment(@PathParam("messageId") long messageId
-			, Comment comment) {
+	// POST a comment of a given message
+	@POST
+	public Comment addComment(@PathParam("messageId") long messageId, Comment comment) {
 		return service.addComment(messageId, comment);
 	}
 	

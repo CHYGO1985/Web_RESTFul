@@ -13,9 +13,9 @@ public class ErrorMessage {
 		
 	}
 	
-	public ErrorMessage(String errorMessagem, int errorCode, String docLink) {
+	public ErrorMessage(String errorMessage, int errorCode, String docLink) {
 		
-		this.errorMessage = errorMessagem;
+		this.errorMessage = errorMessage;
 		this.errorCode = errorCode;
 		this.docLink = docLink;
 	}

@@ -22,7 +22,8 @@ import org.jingjie.restful.messenger.service.MessageService;
 @Path("/messages")
 //because it is a method consumes json, so use Consumes annotation to specify the request body format
 @Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
+// support multi types
+@Produces(value = {MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
 public class MessageResource {
 	
 	MessageService messageService = new MessageService();

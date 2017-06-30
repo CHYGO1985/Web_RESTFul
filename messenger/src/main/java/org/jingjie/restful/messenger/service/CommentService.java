@@ -1,16 +1,16 @@
 package org.jingjie.restful.messenger.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jingjie.restful.messenger.database.DatabaseClass;
 import org.jingjie.restful.messenger.model.Comment;
 import org.jingjie.restful.messenger.model.Message;
 
 public class CommentService {
 	
-	private Map<Long, Message> messages = new HashMap<>();
+	private Map<Long, Message> messages = DatabaseClass.getMessages();
 	
 	public CommentService() {
 		
