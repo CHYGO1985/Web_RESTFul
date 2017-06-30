@@ -1,5 +1,6 @@
 package org.jingjie.restful.messenger.resources;
 
+import java.net.URI;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -11,12 +12,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriInfo;
 
 import org.jingjie.restful.messenger.model.Message;
 import org.jingjie.restful.messenger.service.MessageService;
 
-@Path("messages")
+@Path("/messages")
 //because it is a method consumes json, so use Consumes annotation to specify the request body format
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -55,9 +58,41 @@ public class MessageResource {
 	@Path("/{messageId}") // this is to map messageId in Message
 	// @PathParam annotate that "messageId" is a parameter
 	// messageId is converted to long by jersey
-	public Message getMessage(@PathParam("messageId") long messageId) {
+	public Message getMessage(@PathParam("messageId") long messageId, @Context UriInfo uriInfo) {
 		
-		return messageService.getMessage(messageId);
+		Message message = messageService.getMessage(messageId);
+		message.addLink(getUriForSelf(uriInfo, messageId), "self");
+		message.addLink(getUriForProfile(uriInfo, message), "profile");
+		message.addLink(getUriForComment(uriInfo, message), "comment");
+		return message;
+	}
+	
+	public String getUriForComment(UriInfo uriInfo, Message message) {
+		URI uri = uriInfo.getBaseUriBuilder()	// get http://localhost:1080/messenger/webapi/
+				.path(MessageResource.class) // get /messages
+				.path(MessageResource.class, "getCommentResource") // get sub resrouce class + method
+				.path(CommentResource.class) // get /commemnts
+				.resolveTemplate("messageId", message.getId()) // get the argument @Path("/{messageId}/comments")
+				.build();
+		return uri.toString();
+		
+	}
+	
+	public String getUriForSelf(UriInfo uriInfo, long messageId) {
+		URI uri = uriInfo.getBaseUriBuilder()	// get http://localhost:1080/messenger/webapi/
+				.path(MessageResource.class) // get /messages as @Path("/messages")
+				.path(Long.toString(messageId)) // get messageId @Path("/{messageId}")
+				.build();
+		return uri.toString();
+	}
+	
+	public String getUriForProfile(UriInfo uriInfo, Message message) {
+		
+		URI uri = uriInfo.getBaseUriBuilder()
+							.path(ProfileResource.class)
+							.path(message.getAuthor()) // get profileName
+							.build();
+		return uri.toString();
 	}
 	
 	@POST
@@ -83,4 +118,5 @@ public class MessageResource {
 	public CommentResource getCommentResource() {
 		return new CommentResource();
 	}
+	
 }

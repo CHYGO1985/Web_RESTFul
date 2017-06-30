@@ -1,7 +1,9 @@
 package org.jingjie.restful.messenger.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -14,10 +16,12 @@ public class Message {
 	private String messåge;
 	private Date created;
 	private String author;
-	private Map<Long, Comment> comments = new HashMap<>();
+	private Map<Long, Comment> comments; 
+	private List<Link> links;
 	
 	public Message() {
-		
+		comments = new HashMap<>();
+		links = new ArrayList<>();
 	}
 	
 	public Message(long id, String messåge, String author) {
@@ -25,6 +29,8 @@ public class Message {
 		this.messåge = messåge;
 		this.author = author;
 		this.created = new Date();
+		comments = new HashMap<>();
+		links = new ArrayList<>();
 	}
 	
 	public long getId() {
@@ -60,5 +66,18 @@ public class Message {
 
 	public void setComments(Map<Long, Comment> comments) {
 		this.comments = comments;
+	}
+
+	public List<Link> getLinks() {
+		return links;
+	}
+
+	public void setLinks(List<Link> links) {
+		this.links = links;
+	}
+	
+	public void addLink(String url, String rel) {
+		Link link = new Link(url, rel);
+		links.add(link);
 	}
 }
