@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.persistence.exceptions.i18n.DatabaseExceptionResource;
 import org.jingjie.restful.messenger.database.DatabaseClass;
+import org.jingjie.restful.messenger.exception.DataNotFoundException;
 import org.jingjie.restful.messenger.model.Comment;
 import org.jingjie.restful.messenger.model.Message;
 
@@ -34,7 +36,21 @@ public class CommentService {
 	// get a single comment that belongs to a message
 	public Comment getComment(long messageId, long commentId) {
 		
-		return messages.get(messageId).getComments().get(commentId);
+		Message message = messages.get(messageId);
+		if (message == null) 
+			throw new DataNotFoundException("Message with id " + messageId 
+					+ " not found");
+		
+		Map<Long, Comment> comments = message.getComments();
+		if (comments == null || comments.isEmpty() == true)
+			throw new DataNotFoundException("There is no comments attach to "
+					+ "the message with id " + messageId);
+		Comment comment = comments.get(commentId);
+		if (comment == null) 
+			throw new DataNotFoundException("Comment with id " + commentId
+				+ " not found");
+		
+		return comment;
 	}
 	
 	// update a comment of a given message
