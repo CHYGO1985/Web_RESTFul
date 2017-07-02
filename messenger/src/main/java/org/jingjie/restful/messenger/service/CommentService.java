@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.persistence.exceptions.i18n.DatabaseExceptionResource;
 import org.jingjie.restful.messenger.database.DatabaseClass;
 import org.jingjie.restful.messenger.exception.DataNotFoundException;
 import org.jingjie.restful.messenger.model.Comment;

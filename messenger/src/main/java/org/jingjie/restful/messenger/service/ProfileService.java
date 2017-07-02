@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.jingjie.restful.messenger.database.DatabaseClass;
+import org.jingjie.restful.messenger.exception.DataNotFoundException;
 import org.jingjie.restful.messenger.model.Profile;
 
 /**
@@ -31,6 +32,11 @@ public class ProfileService {
 	
 	// get a particular profile with a given profile name
 	public Profile getProfile(String profileName) {
+		
+		Profile profile = profiles.get(profileName);
+		if (profile == null) 
+			throw new DataNotFoundException("The profile with profile name " + 
+					profileName + " not found");
 		return profiles.get(profileName);
 	}
 	
