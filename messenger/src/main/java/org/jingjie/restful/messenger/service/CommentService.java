@@ -28,7 +28,12 @@ public class CommentService {
 	// get all comments that belong to a message
 	public List<Comment> getAllComments(long messageId) {
 		
-		Map<Long, Comment> comments = messages.get(messageId).getComments();
+		Message message = messages.get(messageId);
+		if (message == null)
+			throw new DataNotFoundException("Message with id " + messageId + 
+					" not found");
+		Map<Long, Comment> comments = message.getComments();
+		
 		return new ArrayList<Comment>(comments.values());
 	}
 	
